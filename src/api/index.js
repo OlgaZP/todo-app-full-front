@@ -29,3 +29,20 @@ const tasks = [
 export const getTasks = () => {
   return Promise.resolve({ data: tasks });
 };
+
+//export const createTask = task => apiInstance.post(/tasks,task);
+export const createTask = task => {
+  const newTask = {
+    id: Date.now(),
+    ...task,
+  };
+  tasks.push(newTask);
+  return Promise.resolve({ data: newTask });
+};
+
+//export const deleteTask = id => apiInstance.delete(`/tasks/${id}`)
+export const deleteTask = id => {
+  const index = tasks.findIndex(t => t.id === id);
+
+  return Promise.resolve({ data: tasks.splice(index, 1) });
+};

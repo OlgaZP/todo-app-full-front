@@ -34,6 +34,63 @@ function tasksReduser (state = initialState, action) {
         error,
       };
     }
+    //C - create
+    case ACTION_TYPES.CREATE_TASK_REQUEST: {
+      return {
+        ...state,
+        isFetching: true,
+        error: null,
+      };
+    }
+    case ACTION_TYPES.CREATE_TASK_SUCCESS: {
+      const { task } = action;
+      const { tasks } = state;
+      const newTasks = [...tasks, task];
+      return {
+        ...state,
+        isFetching: false,
+        tasks: newTasks,
+      };
+    }
+    case ACTION_TYPES.CREATE_TASK_ERROR: {
+      const { error } = action;
+      return {
+        ...state,
+        isFetching: false,
+        error,
+      };
+    }
+    //D - delete
+    case ACTION_TYPES.DELETE_TASK_REQUEST: {
+      return {
+        ...state,
+        isFetching: true,
+        error: null,
+      };
+    }
+    case ACTION_TYPES.DELETE_TASK_SUCCESS: {
+      const { deletedTask } = action;
+      const { tasks } = state;
+      const modifiedTasks = [...tasks];
+      modifiedTasks.splice(
+        modifiedTasks.findIndex(t => t.id === deletedTask.id),
+        1
+      );
+
+      return {
+        ...state,
+        isFetching: false,
+        tasks: modifiedTasks,
+      };
+    }
+    case ACTION_TYPES.DELETE_TASK_ERROR: {
+      const { error } = action;
+      return {
+        ...state,
+        isFetching: false,
+        error,
+      };
+    }
 
     default:
       return state;
