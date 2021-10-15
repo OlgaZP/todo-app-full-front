@@ -61,6 +61,36 @@ function tasksReduser (state = initialState, action) {
         error,
       };
     }
+    //U - update
+    case ACTION_TYPES.UPDATE_TASK_REQUEST: {
+      return {
+        ...state,
+        isFetching: true,
+        error: null,
+      };
+    }
+    case ACTION_TYPES.UPDATE_TASK_SUCCESS: {
+      const { updatedTask } = action;
+      const { tasks } = state;
+      console.log(`updatedTask from UPDATE_TASK_SUCCESS reducer`, updatedTask);
+      // const newTasks = [...tasks, task];
+      const index = tasks.findIndex(t => t.id === updatedTask.id);
+      tasks[index] = { ...tasks[index], ...updatedTask };
+      console.log(`tasks from reducer`, tasks);
+      return {
+        ...state,
+        isFetching: false,
+        tasks,
+      };
+    }
+    case ACTION_TYPES.UPDATE_TASK_ERROR: {
+      const { error } = action;
+      return {
+        ...state,
+        isFetching: false,
+        error,
+      };
+    }
     //D - delete
     case ACTION_TYPES.DELETE_TASK_REQUEST: {
       return {

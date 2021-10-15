@@ -3,6 +3,9 @@ import {
   createTaskError,
   createTaskRequest,
   createTaskSuccess,
+  updateTaskError,
+  updateTaskRequest,
+  updateTaskSuccess,
   deleteTaskError,
   deleteTaskRequest,
   deleteTaskSuccess,
@@ -32,6 +35,19 @@ export function * createTaskSaga (action) {
     yield put(createTaskSuccess(newTask));
   } catch (err) {
     yield put(createTaskError(err));
+  }
+}
+
+export function * updateTaskSaga (action) {
+  const { id, taskForUpdate } = action;
+  console.log(`into update task saga`);
+  yield put(updateTaskRequest());
+  try {
+    const { data: updatedTask } = yield API.updateTask(id, taskForUpdate);
+    console.log(`updatedTask from saga`, updatedTask);
+    yield put(updateTaskSuccess(updatedTask));
+  } catch (err) {
+    yield put(updateTaskError(err));
   }
 }
 
