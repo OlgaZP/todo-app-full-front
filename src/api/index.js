@@ -23,6 +23,22 @@ const tasks = [
     isDone: true,
     priority: 'high',
   },
+  {
+    id: Date.now() + Math.trunc(Math.random() * 1000000),
+    title: 'Task title 3',
+    description: 'Task Description 3',
+    date: Date.now(),
+    isDone: true,
+    priority: 'high',
+  },
+  {
+    id: Date.now() + Math.trunc(Math.random() * 1000000),
+    title: 'Task title 4',
+    description: 'Task Description 4',
+    date: Date.now(),
+    isDone: false,
+    priority: 'normal',
+  },
 ];
 
 // export const getTasks = () => apiInstance.get('/tasks');

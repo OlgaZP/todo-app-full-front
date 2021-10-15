@@ -13,6 +13,7 @@ function ToDoList (props) {
   console.log('tasks from ToDoListCOmponent:>> ', tasks);
   const mapTask = ({ id, title, date, isDone, priority }) => {
     const deleteHandler = () => {
+      console.log('id from delete handler :>> ', id);
       deleteTask(id);
     };
 

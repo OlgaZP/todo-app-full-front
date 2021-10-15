@@ -20,10 +20,11 @@ function tasksReduser (state = initialState, action) {
     }
     case ACTION_TYPES.GET_TASKS_SUCCESS: {
       const { tasks } = action;
+      const newTasks = [...tasks];
       return {
         ...state,
         isFetching: false,
-        tasks,
+        tasks: newTasks,
       };
     }
     case ACTION_TYPES.GET_TASKS_ERROR: {
@@ -71,6 +72,8 @@ function tasksReduser (state = initialState, action) {
     case ACTION_TYPES.DELETE_TASK_SUCCESS: {
       const { deletedTask } = action;
       const { tasks } = state;
+      console.log(`deletedTask from DELETE_TASK_SUSSECC`, deletedTask);
+      console.log(`tasks from DELETE_TASK_SUCCESS`, tasks);
       const modifiedTasks = [...tasks];
       modifiedTasks.splice(
         modifiedTasks.findIndex(t => t.id === deletedTask.id),
