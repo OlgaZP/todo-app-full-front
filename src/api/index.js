@@ -11,7 +11,7 @@ const tasks = [
     id: Date.now() + Math.trunc(Math.random() * 1000000),
     title: 'Task title 1',
     description: 'Task Description 1',
-    date: Date.now(),
+    date: new Date(),
     isDone: false,
     priority: 'low',
   },
@@ -19,7 +19,7 @@ const tasks = [
     id: Date.now() + Math.trunc(Math.random() * 1000000),
     title: 'Task title 2',
     description: 'Task Description 2',
-    date: Date.now(),
+    date: new Date(),
     isDone: true,
     priority: 'high',
   },
@@ -27,7 +27,7 @@ const tasks = [
     id: Date.now() + Math.trunc(Math.random() * 1000000),
     title: 'Task title 3',
     description: 'Task Description 3',
-    date: Date.now(),
+    date: new Date(),
     isDone: true,
     priority: 'high',
   },
@@ -35,7 +35,7 @@ const tasks = [
     id: Date.now() + Math.trunc(Math.random() * 1000000),
     title: 'Task title 4',
     description: 'Task Description 4',
-    date: Date.now(),
+    date: new Date(),
     isDone: false,
     priority: 'normal',
   },
@@ -49,7 +49,7 @@ export const getTasks = () => {
 //export const createTask = task => apiInstance.post(/tasks,task);
 export const createTask = task => {
   const newTask = {
-    id: Date.now(),
+    id: new Date(),
     ...task,
   };
   tasks.push(newTask);

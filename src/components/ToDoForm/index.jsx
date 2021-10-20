@@ -2,6 +2,7 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { connect } from 'react-redux';
 import { createTaskAction } from '../../actions';
+import styles from './ToDoForm.module.sass';
 
 function ToDoForm (props) {
   const { createTask } = props;
@@ -9,7 +10,7 @@ function ToDoForm (props) {
   const initialTaskValues = {
     title: 'Task title ' + String(Math.trunc(Math.random() * 100)),
     description: 'Task Description ' + String(Math.trunc(Math.random() * 100)),
-    date: Date.now(),
+    date: new Date(),
     isDone: Boolean(Math.round(Math.random())),
     priority: 'low',
   };
@@ -25,12 +26,28 @@ function ToDoForm (props) {
     <Formik initialValues={initialTaskValues} onSubmit={submitHandler}>
       {formikProps => {
         return (
-          <Form>
-            <Field name='title' />
-            <Field name='description' />
-            <Field name='date' />
-            <Field name='priority' />
-            <button type='submit'>Add To List</button>
+          <Form className={styles.toDoFormContainer}>
+            <div className={styles.toDoFormRow}>
+              <label htmlFor='title'>ToDo title</label>
+              <Field name='title' />
+              <label htmlFor='priority'>Priority</label>
+              <Field component='select' name='priority' multiple={false}>
+                <option value='high'>high</option>
+                <option value='normal'>normal</option>
+                <option value='low'>low</option>
+              </Field>
+            </div>
+            <div className={styles.toDoFormRow}>
+              <label htmlFor='date'>Choose the date</label>
+              <Field name='date' />
+            </div>
+            <div className={styles.toDoFormRow}>
+              <label htmlFor='description'>Desctiption</label>
+              <Field name='description' style={{ flexGrow: '1' }} />
+              <button className={styles.addToDoBtn} type='submit'>
+                Add To List
+              </button>
+            </div>
           </Form>
         );
       }}
