@@ -28,8 +28,12 @@ function ToDoForm (props) {
         return (
           <Form className={styles.toDoFormContainer}>
             <div className={styles.toDoFormRow}>
-              <label htmlFor='title'>ToDo title</label>
-              <Field name='title' />
+              <label htmlFor='title'>What to do</label>
+              <Field name='title' style={{ flexGrow: '0.9' }} />
+            </div>
+            <div className={styles.toDoFormRow}>
+              <label htmlFor='date'>When do it</label>
+              <Field name='date' />
               <label htmlFor='priority'>Priority</label>
               <Field component='select' name='priority' multiple={false}>
                 <option value='high'>high</option>
@@ -38,12 +42,8 @@ function ToDoForm (props) {
               </Field>
             </div>
             <div className={styles.toDoFormRow}>
-              <label htmlFor='date'>Choose the date</label>
-              <Field name='date' />
-            </div>
-            <div className={styles.toDoFormRow}>
               <label htmlFor='description'>Desctiption</label>
-              <Field name='description' style={{ flexGrow: '1' }} />
+              <Field name='description' style={{ flexGrow: '0.8' }} />
               <button className={styles.addToDoBtn} type='submit'>
                 Add To List
               </button>

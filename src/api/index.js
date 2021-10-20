@@ -49,7 +49,7 @@ export const getTasks = () => {
 //export const createTask = task => apiInstance.post(/tasks,task);
 export const createTask = task => {
   const newTask = {
-    id: new Date(),
+    id: Date.now() + Math.trunc(Math.random() * 1000000),
     ...task,
   };
   tasks.push(newTask);

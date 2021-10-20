@@ -42,9 +42,8 @@ function ToDoList (props) {
           onChange={changeDoneStatusHandler}
         />
         <div className={styles.toDoItem}>
-          <p>
-            {title} {date.toDateString()}
-          </p>
+          <p> {title} </p>
+          <p> {date.toDateString()}</p>
           <p> {description} </p>
         </div>
         <FontAwesomeIcon
