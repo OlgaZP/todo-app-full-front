@@ -10,7 +10,7 @@ function ToDoForm (props) {
   const initialTaskValues = {
     title: 'Task title ' + String(Math.trunc(Math.random() * 100)),
     description: 'Task Description ' + String(Math.trunc(Math.random() * 100)),
-    date: new Date(),
+    date: new Date().toDateString(),
     isDone: Boolean(Math.round(Math.random())),
     priority: 'low',
   };

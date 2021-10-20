@@ -43,7 +43,7 @@ function ToDoList (props) {
         />
         <div className={styles.toDoItem}>
           <p> {title} </p>
-          <p> {date.toDateString()}</p>
+          <p> {date}</p>
           <p> {description} </p>
         </div>
         <FontAwesomeIcon
